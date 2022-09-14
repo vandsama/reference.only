@@ -81,7 +81,7 @@ public class Exercises {
         */
 		double quartersFound = .25;
 		double dimesFound = .1;
-		double nickelsFound = .01 * 2;
+		double nickelsFound = .05 * 2;
 		double moneyFound = quartersFound + dimesFound + nickelsFound;
 
         /* Exercise 11
@@ -128,10 +128,11 @@ public class Exercises {
         15. Mrs. Hilt has $10. She spends $3 on a toy truck and $2 on a pencil
         case. How much money does she have left?
         */
-		int moneyOfMrsHilt = 10;
-		int moneySpentOnToyTruck = 3;
-		int moneySpentOnPencilCase = 2;
-		moneyOfMrsHilt -= (moneySpentOnToyTruck + moneySpentOnPencilCase);
+		double moneyOfMrsHilt = 10.0;
+		double moneySpentOnToyTruck = 3.0;
+		double moneySpentOnPencilCase = 2.0;
+		double moneySpentOnToys = moneySpentOnToyTruck + moneySpentOnPencilCase;
+		double moneyRemainingAfterPurchases = moneyOfMrsHilt - moneySpentOnToys;
 
         /* Exercise 16
         16. Josh had 16 marbles in his collection. He lost 7 marbles. How many
@@ -139,7 +140,7 @@ public class Exercises {
         */
 		int marblesOfJosh = 16;
 		int marblesLostByJosh = 7;
-		marblesOfJosh -= marblesLostByJosh;
+		int marblesRemaining = marblesOfJosh - marblesLostByJosh;
 
         /* Exercise 17
         17. Megan has 19 seashells. How many more seashells does she need to
@@ -163,7 +164,8 @@ public class Exercises {
         */
 		int booksOnShelf = 38;
 		int booksAddedByMarta = 10;
-		booksOnShelf += booksAddedByMarta;
+		int booksOnShelfAfterAdding = booksOnShelf + booksAddedByMarta;
+		// booksOnShelf += booksAddedByMarta;
 
         /* Exercise 20
         20. A bee has 6 legs. How many legs do 8 bees have?
@@ -221,15 +223,22 @@ public class Exercises {
         */
 		int hotDogsBought = 6;
 		double costOfHotDog = .5;
-		double totalCostOfHotDogs = hotDogsBought + costOfHotDog;
+		double totalCostOfHotDogs = hotDogsBought * costOfHotDog;
 
         /* Exercise 27
         27. Mrs. Hilt has 50 cents. A pencil costs 7 cents. How many pencils can
         she buy with the money she has?
         */
-		double moneyMrsHiltHas = .5;
-		double costOfPencil = .07;
-		double pencilsCanBePurchased = moneyMrsHiltHas / costOfPencil;
+
+		int centsAvailable = 50;
+		int centsPencilCosts = 7;
+		int numberPencilsCanBeBought = centsAvailable / centsPencilCosts;
+
+//		int x = (int) 10D;
+//		double moneyMrsHiltHas = .50D;
+//		double costOfPencil = .07D;
+//		double pencilsCanBePurchased = (moneyMrsHiltHas / costOfPencil) - (moneyMrsHiltHas%costOfPencil);
+//
 
         /* Exercise 28
         28. Mrs. Hilt saw 33 butterflies. Some of the butterflies were red and others
@@ -294,7 +303,8 @@ public class Exercises {
         */
 		int legosEllenHas = 380;
 		int legosEllenLost = 57;
-		legosEllenHas -= legosEllenLost;
+		int legosRemaining = legosEllenHas - legosEllenLost;
+		//legosEllenHas -= legosEllenLost;
 
         /* Exercise 36
         36. Arthur baked 35 muffins. How many more muffins does Arthur have to
@@ -324,9 +334,9 @@ public class Exercises {
         39. There are 100 cupcakes for 8 children to share. How much will each
         person get if they share the cupcakes equally?
         */
-		int cupcakesTotal = 100;
-		int childrenTotal = 8;
-		int cupcakesPerChild = cupcakesTotal / childrenTotal;
+		double cupcakes = 100.0;
+		int children = 8;
+		double cupcakesPerChild = cupcakes / children;
 
         /* Exercise 40
         40. She made 47 gingerbread cookies which she will distribute equally in
@@ -335,7 +345,7 @@ public class Exercises {
         */
 		int cookiesMade = 47;
 		int cookiesPerJar = 6;
-		int cookiesLeftover = cookiesMade / cookiesPerJar;
+		int cookiesLeftover = cookiesMade % cookiesPerJar;
 
         /* Exercise 41
         41. She also prepared 59 croissants which she plans to give to her 8
@@ -344,7 +354,7 @@ public class Exercises {
         */
 		int croissantsMade = 59;
 		int neighborsWhoGetCroissants = 8;
-		int croissantsRemaining = croissantsMade / neighborsWhoGetCroissants;
+		int croissantsRemaining = croissantsMade % neighborsWhoGetCroissants;
 
         /* Exercise 42
         42. Marian also baked oatmeal cookies for her classmates. If she can
@@ -352,8 +362,8 @@ public class Exercises {
         prepare 276 oatmeal cookies at a time?
         */
 		int cookiesPerTray = 12;
-		int cookiesGoal = 276;
-		int traysNeeded = cookiesPerTray / cookiesGoal;
+		int cookies = 276;
+		int traysNeeded = cookies / cookiesPerTray;
 
         /* Exercise 43
         43. Marian’s friends were coming over that afternoon so she made 480
@@ -425,9 +435,9 @@ public class Exercises {
         50. Cristina baked 17 croissants. If she planned to serve this equally to
         her seven guests, how many will each have?
         */
-		int croissantsBakedByCristina = 17;
-		int numberOfGuestsOfCristina = 7;
-		int croissantsPerGuestOfCristina = croissantsBakedByCristina / numberOfGuestsOfCristina;
+		double croissants = 17.0;
+		int guests = 7;
+		double croissantsPerGuest = croissants / guests;
 
 	    /* Exercise 51
 	    51. Bill and Jill are house painters. Bill can paint a standard room in 2.15 hours, while Jill averages
@@ -435,13 +445,20 @@ public class Exercises {
 	    Hint: Calculate the rate at which each painter can complete a room (rooms / hour), combine those rates,
 	    and then divide the total number of rooms to be painted by the combined rate.
 	    */
-		double timeRequiredByBillToPaintRoom = 2.15;
-		double billRoomsPaintedPerHour = 60 / timeRequiredByBillToPaintRoom;
-		double timeRequiredByJillToPaintRoom = 1.9;
-		double jillRoomsPaintedPerHour = 60 / timeRequiredByJillToPaintRoom;
-		int numberOfRoomsToPaint = 5;
-		double combinedRate = billRoomsPaintedPerHour + jillRoomsPaintedPerHour;
-		double timeRequiredToPaint = numberOfRoomsToPaint / combinedRate;
+
+		double billRoomsPaintedPerHour = 1 / 2.15;
+		double jillRoomsPaintedPerHour = 1/1.9;
+		double combinedRoomsPaintedPerHour = billRoomsPaintedPerHour + jillRoomsPaintedPerHour;
+		int numberOfRooms = 5;
+		double totalTimeToPaintFiveRooms = 5 / combinedRoomsPaintedPerHour;
+
+//		double timeRequiredByBillToPaintRoom = 2.15;
+//		double billRoomsPaintedPerHour = 60 / timeRequiredByBillToPaintRoom;
+//		double timeRequiredByJillToPaintRoom = 1.9;
+//		double jillRoomsPaintedPerHour = 60 / timeRequiredByJillToPaintRoom;
+//		int numberOfRoomsToPaint = 5;
+//		double combinedRate = billRoomsPaintedPerHour + jillRoomsPaintedPerHour;
+//		double timeRequiredToPaint = numberOfRoomsToPaint / combinedRate;
 
 
 	    /* Exercise 52
@@ -460,9 +477,9 @@ public class Exercises {
 	    53. The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
 	    What percentage of the trip as a whole number has been completed?
 	    */
-		int distanceBetweenNewYorkAndChicago = 800;
-		int distanceTravelled = 537;
-		int percentageDistanceTravelled = distanceTravelled / distanceBetweenNewYorkAndChicago;
+		double distanceOfTrip = 800d;
+		double distanceTravelled = 537d;
+		int percentageDistanceTravelled = (int) ((distanceTravelled / distanceOfTrip) * 100);
 	}
 
 }
