@@ -24,6 +24,12 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3) ➔ 269.97
      */
     public double calculateStayTotal(int numberOfNights) {
+        if(numberOfNights <= 2){
+            return numberOfNights * 99.99;
+        }
+        else if(numberOfNights > 2){
+            return numberOfNights * 89.99;
+        }
         return 0;
     }
 
@@ -42,6 +48,19 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 2) ➔ 289.97
      */
     public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights) {
+        int numWeekNights = numOfTotalNights - numOfWeekendNights;
+        if(numOfTotalNights <= 2 && numOfWeekendNights == 0){
+            return numOfTotalNights * 99.99;
+        }
+        else if(numOfTotalNights > 2 && numOfWeekendNights == 0){
+            return numOfTotalNights * 89.99;
+        }
+        else if(numOfTotalNights <= 2 && numOfWeekendNights > 0){
+            return (numOfTotalNights*99.99);
+        }
+        else if(numOfTotalNights > 2 && numOfWeekendNights > 0){
+            return (numWeekNights * 89.99) + numOfWeekendNights * 99.99;
+        }
         return 0;
     }
 
@@ -60,6 +79,23 @@ public class Exercise04_HotelReservation {
     calculateStayTotal(3, 1, true) ➔ 269.97
      */
     public double calculateStayTotal(int numOfTotalNights, int numOfWeekendNights, boolean isRewardsMember) {
+        int numWeekNights = numOfTotalNights - numOfWeekendNights;
+        if(isRewardsMember == true){
+            return numOfTotalNights * 89.99;
+        }
+        if(numOfTotalNights <= 2 && numOfWeekendNights == 0){
+            return numOfTotalNights * 99.99;
+        }
+        else if(numOfTotalNights > 2 && numOfWeekendNights == 0){
+            return numOfTotalNights * 89.99;
+        }
+        else if(numOfTotalNights <= 2 && numOfWeekendNights > 0){
+            return (numOfTotalNights*99.99);
+        }
+        else if(numOfTotalNights > 2 && numOfWeekendNights > 0){
+            return (numWeekNights * 89.99) + numOfWeekendNights * 99.99;
+        }
         return 0;
+
     }
 }

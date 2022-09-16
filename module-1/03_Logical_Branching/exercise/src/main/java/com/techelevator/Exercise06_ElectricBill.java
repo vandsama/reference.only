@@ -24,6 +24,7 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110) ➔ 22.5
      */
     public double calculateElectricBill(double unitsUsed) {
+
         return 0;
     }
 

@@ -22,7 +22,14 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45) ➔ 23.75
      */
     public double calculateShippingTotal(int weightPounds) {
-        return 0;
+        int difference = weightPounds - MAX_WEIGHT_POUNDS;
+        if(weightPounds < MAX_WEIGHT_POUNDS){
+            return weightPounds * UP_TO_40_LB_RATE;
+        }
+        else {
+            return (difference * OVER_40_LB_RATE) + (MAX_WEIGHT_POUNDS * UP_TO_40_LB_RATE);
+        }
+
     }
 
     /*
@@ -38,8 +45,36 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, true) ➔ 21.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0;
+        int difference = weightPounds - MAX_WEIGHT_POUNDS;
+        if (weightPounds < MAX_WEIGHT_POUNDS && hasDiscount) {
+            return weightPounds * UP_TO_40_LB_RATE * 0.90;
+        } else if (weightPounds < MAX_WEIGHT_POUNDS) {
+            return weightPounds * UP_TO_40_LB_RATE;
+        } else if (hasDiscount) {
+            return ((difference * OVER_40_LB_RATE) + (MAX_WEIGHT_POUNDS * UP_TO_40_LB_RATE)) * 0.90;
+        } else{
+            return (difference * OVER_40_LB_RATE) + (MAX_WEIGHT_POUNDS * UP_TO_40_LB_RATE);
+        }
     }
+
+
+
+
+
+
+//        if(weightPounds < MAX_WEIGHT_POUNDS && hasDiscount == true){
+//            return weightPounds * UP_TO_40_LB_RATE * 0.90;
+//        }
+//        else if(weightPounds < MAX_WEIGHT_POUNDS && hasDiscount == false){
+//            return weightPounds * UP_TO_40_LB_RATE;
+//        }
+//        else if(weightPounds >= MAX_WEIGHT_POUNDS && hasDiscount == true){
+//            return weightPounds * OVER_40_LB_RATE * 0.90;
+//        }
+//        else {
+//            return weightPounds * OVER_40_LB_RATE;
+//        }
+
 
     /*
     As the business grows for Scamper Shipping Company, they now offer discounts in various amounts.
@@ -53,6 +88,17 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, 0.2) ➔ 19.0
      */
     public double calculateShippingTotal(int weightPounds, double discountPercentage) {
-        return 0;
+        int difference = weightPounds - MAX_WEIGHT_POUNDS;
+        if (weightPounds < MAX_WEIGHT_POUNDS && discountPercentage > 0) {
+            return weightPounds * UP_TO_40_LB_RATE * (1-discountPercentage);
+        } else if (weightPounds < MAX_WEIGHT_POUNDS) {
+            return weightPounds * UP_TO_40_LB_RATE;
+        } else if (discountPercentage > 0) {
+            return ((difference * OVER_40_LB_RATE) + (MAX_WEIGHT_POUNDS * UP_TO_40_LB_RATE)) * (1 - discountPercentage);
+        } else{
+            return (difference * OVER_40_LB_RATE) + (MAX_WEIGHT_POUNDS * UP_TO_40_LB_RATE);
+        }
+
+
     }
 }

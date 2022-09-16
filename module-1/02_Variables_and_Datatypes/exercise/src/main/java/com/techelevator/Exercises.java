@@ -477,9 +477,26 @@ public class Exercises {
 	    53. The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
 	    What percentage of the trip as a whole number has been completed?
 	    */
-		double distanceOfTrip = 800d;
-		double distanceTravelled = 537d;
-		int percentageDistanceTravelled = (int) ((distanceTravelled / distanceOfTrip) * 100);
+//		Working Solution 1:
+//		double distanceOfTrip = 800d;
+//		double distanceTravelled = 537d;
+//		int percentageDistanceTravelled = (int) ((distanceTravelled / distanceOfTrip) * 100);
+
+//		Working Solution 2:
+//		int totalDistance = 800;
+//		int alreadyTravelled = 537;
+//		double portionComplete = (double)alreadyTravelled / totalDistance;
+//		int percentageTravelled = (int) (portionComplete*100);
+//		System.out.println(percentageTravelled);
+
+// 		Working Solution 3:
+		int totalDistance = 800;
+		int alreadyTravelled = 537;
+		double portionComplete = alreadyTravelled * 1.0 / totalDistance;
+		int percentageTravelled = (int) (portionComplete*100);
+		System.out.println(percentageTravelled);
+
+
 	}
 
 }
