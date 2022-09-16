@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.util.Base64;
+
 public class Exercise06_ElectricBill {
 
     /*
@@ -24,8 +26,13 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110) ➔ 22.5
      */
     public double calculateElectricBill(double unitsUsed) {
-
-        return 0;
+        double excessUnitsUsed = unitsUsed - BASIC_SERVICE_LIMIT;
+        if (unitsUsed <= BASIC_SERVICE_LIMIT){
+            return unitsUsed * BASIC_SERVICE_RATE;
+        }
+        else {
+            return ((BASIC_SERVICE_LIMIT * BASIC_SERVICE_RATE) + (excessUnitsUsed * EXCESS_SERVICE_RATE));
+        }
     }
 
     /*
@@ -41,7 +48,21 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, true) ➔ 21.375
      */
     public double calculateElectricBill(double unitsUsed, boolean hasRenewableEnergy) {
-        return 0;
+        double excessUnitsUsed = unitsUsed - BASIC_SERVICE_LIMIT;
+        if (hasRenewableEnergy) {
+            if (unitsUsed <= BASIC_SERVICE_LIMIT) {
+                return unitsUsed * BASIC_SERVICE_RATE * (1-RENEWABLE_ENERGY_DISCOUNT);
+            } else {
+                return (((BASIC_SERVICE_LIMIT * BASIC_SERVICE_RATE) + (excessUnitsUsed * EXCESS_SERVICE_RATE)) * (1-RENEWABLE_ENERGY_DISCOUNT));
+            }
+        } else {
+            if (unitsUsed <= BASIC_SERVICE_LIMIT){
+                return unitsUsed * BASIC_SERVICE_RATE;
+            }
+            else {
+                return ((BASIC_SERVICE_LIMIT * BASIC_SERVICE_RATE) + (excessUnitsUsed * EXCESS_SERVICE_RATE));
+            }
+        }
     }
 
     /*
@@ -67,6 +88,28 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, 120) ➔ -2.0
      */
     public double calculateElectricBill(double unitsUsed, double unitsReturned) {
-        return 0;
+
+        double netUsage = unitsUsed - unitsReturned;
+        double excessUnitsUsed = netUsage - BASIC_SERVICE_LIMIT;
+
+        if (netUsage > 0 && unitsReturned > 0){
+            if (netUsage <= BASIC_SERVICE_LIMIT) {
+                return netUsage * BASIC_SERVICE_RATE * (1-RENEWABLE_ENERGY_DISCOUNT);
+            } else {
+                return (((BASIC_SERVICE_LIMIT * BASIC_SERVICE_RATE) + (excessUnitsUsed * EXCESS_SERVICE_RATE)) * (1-RENEWABLE_ENERGY_DISCOUNT));
+            }
+        } else if (netUsage > 0 && unitsReturned <= 0){
+                if (netUsage <= BASIC_SERVICE_LIMIT) {
+                    return netUsage * BASIC_SERVICE_RATE;
+                } else {
+                    return (((BASIC_SERVICE_LIMIT * BASIC_SERVICE_RATE) + (excessUnitsUsed * EXCESS_SERVICE_RATE)));
+                }
+        } else if (netUsage <=0){
+            return netUsage * BASIC_SERVICE_RATE;
+        }
+        else {
+            return 0;
+
+        }
     }
 }

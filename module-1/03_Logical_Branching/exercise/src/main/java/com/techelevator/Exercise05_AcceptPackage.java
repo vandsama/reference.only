@@ -74,13 +74,21 @@ public class Exercise05_AcceptPackage {
      */
     public boolean acceptPackage(int weightPounds, int lengthInches, int widthInches, int heightInches, boolean isSurchargePaid) {
         if (weightPounds <= 40 && (lengthInches * widthInches * heightInches) < 6912) {
-            return true;
-        }
-        if (lengthInches > 66 || widthInches > 66 || heightInches > 66 && isSurchargePaid == true) {
-            return true;
-        } else  {
+            if (lengthInches <= 66 && widthInches <= 66 && heightInches <= 66) {
+                return true;
+            } else if (isSurchargePaid) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
             return false;
         }
     }
+
+
+
 }
+
+
 
