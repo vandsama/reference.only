@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.time.LocalDate;
+
 public class Exercise03_Shirts {
 
     private final static char SMALL_TSHIRT = 'S';
@@ -17,7 +19,7 @@ public class Exercise03_Shirts {
     buildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
      */
     public char[] buildOrder() {
-        return new char[] {};    
+        return new char[]{SMALL_TSHIRT, SMALL_TSHIRT, SMALL_TSHIRT, MEDIUM_TSHIRT, MEDIUM_TSHIRT, LARGE_TSHIRT};
     }
 
     /*
@@ -36,8 +38,20 @@ public class Exercise03_Shirts {
     buildBulkOrder(4) → ['S', 'M', 'L', 'S']
     buildBulkOrder(0) → []
      */
-    public char[] buildBulkOrder(int numberOfShirts) { 
-        return new char[] {};    
+    public char[] buildBulkOrder(int numberOfShirts) {
+        char[] bulkOrderSizes = new char[numberOfShirts];
+
+        for (int i = 0; i < numberOfShirts; i++) {
+            if (i % 3 == 0) {
+                bulkOrderSizes[i] = 'S';
+            } else if (i % 3 == 1) {
+                bulkOrderSizes[i] = 'M';
+            } else {
+                bulkOrderSizes[i] = 'L';
+            }
+        }
+
+        return bulkOrderSizes;
     }
 
     /*
@@ -54,6 +68,12 @@ public class Exercise03_Shirts {
     placeRequest([]) → false
      */
     public boolean placeRequest(char[] order) {
-        return false; 
+        for (int i = 0; i < order.length; i++) {
+            if (order[i] == SMALL_TSHIRT) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

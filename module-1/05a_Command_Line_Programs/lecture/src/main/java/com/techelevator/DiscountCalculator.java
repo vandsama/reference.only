@@ -9,23 +9,28 @@ class DiscountCalculator {
      */
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
+        final Scanner userInput = new Scanner(System.in);
 
         System.out.println("Welcome to the Discount Calculator");
 
         // Prompt the user for a discount amount
         // The answer needs to be saved as a double
         System.out.print("Enter the discount amount (w/out percentage): ");
-
-
+        String discountAsString = userInput.nextLine();
+        double theDiscount = Double.parseDouble(discountAsString) / 100;
 
         // Prompt the user for a series of prices
         System.out.print("Please provide a series of prices (space separated): ");
+        String priceInput = userInput.nextLine(); // "1.99 2.39 3.99"
+        String[] pricesAsString = priceInput.split(" ");
 
+        for (int index = 0; index < pricesAsString.length; index++){
+            double originalPrice = Double.parseDouble(pricesAsString[index]);
+            double discountedPrice = originalPrice * (1-theDiscount);
 
-
-
-
+            //System.out.println(originalPrice + " discounted to " + discountedPrice);
+            System.out.println(String.format("[%-10.2] discounted to %5.2f", originalPrice, discountedPrice));
+        }
 
     }
 
