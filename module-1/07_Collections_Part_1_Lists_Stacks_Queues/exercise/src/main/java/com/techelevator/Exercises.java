@@ -16,6 +16,7 @@ public class Exercises {
 	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
 	 */
 	public List<String> array2List(String[] stringArray) {
+		List<String> wordsInOrder = new ArrayList<String>();
 		return null;
 	}
 
