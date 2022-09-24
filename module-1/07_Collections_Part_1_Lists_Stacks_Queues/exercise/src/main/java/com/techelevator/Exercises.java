@@ -17,7 +17,11 @@ public class Exercises {
 	 */
 	public List<String> array2List(String[] stringArray) {
 		List<String> wordsInOrder = new ArrayList<String>();
-		return null;
+
+		for(String word : stringArray){
+			wordsInOrder.add(word);
+		}
+		return wordsInOrder;
 	}
 
 	/*
@@ -27,7 +31,15 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
+		// create array
+		String[] returnArray = new String[stringList.size()];
+
+		// put list into array
+		for(int i = 0; i < stringList.size(); i++){
+			returnArray[i] = stringList.get(i);
+		}
+
+		return returnArray;
 	}
 
 	/*
@@ -38,7 +50,17 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+
+
+		List<String> wordsInOrder = new ArrayList<String>();
+
+		for(String word : stringArray){
+			if (word.length() != 4) {
+				wordsInOrder.add(word);
+			}
+
+		}
+		return wordsInOrder;
 	}
 
 	/*
@@ -48,7 +70,12 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+		List<Double> doublesArrayList = new ArrayList<Double>();
+
+		for(double dividedNumber : intArray){
+			doublesArrayList.add(dividedNumber/2);
+		}
+		return doublesArrayList;
 	}
 
 	/*
@@ -58,7 +85,14 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int largestInteger = integerList.get(0);
+
+		for (Integer number : integerList){
+			if(number > largestInteger){
+				largestInteger = number;
+			}
+		}
+		return largestInteger;
 	}
 
 	/*
@@ -68,7 +102,16 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> oddNumbers = new ArrayList<Integer>();
+
+		for(Integer number : integerArray){
+			if(number % 2 == 0){
+				// skip
+			} else {
+				oddNumbers.add(number);
+			}
+		}
+		return oddNumbers;
 	}
 
 	/*
@@ -79,8 +122,19 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
+		int counter = 0;
+
+		for(Integer number : integerList) {
+			if(number == intToFind) {
+			counter++;
+			}
+		}
+		if (counter >= 2){
+			return true;
+		}
 		return false;
 	}
+
 
 	/*
 	 Given an array of Integers, return a List that contains the same Integers (as Strings). Except any multiple of 3
@@ -95,7 +149,24 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> integersAsStringsList = new ArrayList<String>();
+
+		for (Integer number : integerArray)
+		{
+			if (number % 3 == 0 && number % 5 == 0) {
+				integersAsStringsList.add("FizzBuzz");
+			}
+			else if (number % 3 == 0) {
+				integersAsStringsList.add("Fizz");
+			}
+			else if (number % 5 == 0) {
+				integersAsStringsList.add("Buzz");
+			}
+			else {
+				integersAsStringsList.add(number.toString());
+			}
+		}
+			return integersAsStringsList;
 	}
 
 	/*
@@ -106,7 +177,35 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
-	}
+		List<Integer> returnList = new ArrayList<Integer>();
+		int listOneSize = listOne.size();
+		int listTwoSize = listTwo.size();
 
+		if(listOneSize > listTwoSize){
+			for (int index = 0; index < listTwoSize; index++) {
+				returnList.add(listOne.get(index));
+				returnList.add(listTwo.get(index));
+			}
+			for (int index = listTwoSize; index < listOneSize; index++) {
+				returnList.add(listOne.get(index));
+			}
+
+		} else if(listTwoSize > listOneSize){
+			for (int index = 0; index < listOneSize; index++) {
+				returnList.add(listOne.get(index));
+				returnList.add(listTwo.get(index));
+			}
+			for (int index = listOneSize; index < listTwoSize; index++) {
+				returnList.add(listTwo.get(index));
+			}
+
+		} else if(listOneSize == listTwoSize){
+			for (int index = 0; index < listTwoSize; index++) {
+				returnList.add(listOne.get(index));
+				returnList.add(listTwo.get(index));
+			}
+		}
+
+		return returnList;
+	}
 }
