@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Exercises {
@@ -9,7 +10,7 @@ public class Exercises {
 	 * Given the name of an animal, return the name of a group of that animal
 	 * (e.g. "Elephant" -> "Herd", "Rhino" - "Crash").
 	 *
-	 * The animal name should be case insensitive so "elephant", "Elephant", and
+	 * The animal name should be case-insensitive so "elephant", "Elephant", and
 	 * "ELEPHANT" should all return "Herd".
 	 *
 	 * If the name of the animal is not found, null, or empty, return "unknown".
@@ -34,7 +35,31 @@ public class Exercises {
 	 *
 	 */
 	public String animalGroupName(String animalName) {
-		return null;
+
+		if (animalName == null){
+			return "unknown";
+		}
+
+		//convert input to be lowercase. ("animalName" variable was provided)
+		String lowercaseAnimalName = animalName.toLowerCase();
+
+		Map<String, String> animalGroupMap = new HashMap<>();
+		animalGroupMap.put("rhino", "Crash");
+		animalGroupMap.put("giraffe", "Tower");
+		animalGroupMap.put("elephant", "Herd");
+		animalGroupMap.put("lion", "Pride");
+		animalGroupMap.put("crow", "Murder");
+		animalGroupMap.put("pigeon", "Kit");
+		animalGroupMap.put("flamingo", "Pat");
+		animalGroupMap.put("deer", "Herd");
+		animalGroupMap.put("dog", "Pack");
+		animalGroupMap.put("crocodile", "Float");
+
+		// gets the key for the value in parentheses
+		if (animalGroupMap.get(lowercaseAnimalName) == null) {
+			return "unknown";
+		}
+		return animalGroupMap.get(lowercaseAnimalName);
 	}
 
 	/*
@@ -50,7 +75,7 @@ public class Exercises {
 	 * "BEDROOM3434" -> 0.60
 	 * "BATH0073" -> 0.15
 	 *
-	 * The item number should be case insensitive so "kitchen4001", "Kitchen4001", and "KITCHEN4001"
+	 * The item number should be case-insensitive so "kitchen4001", "Kitchen4001", and "KITCHEN4001"
 	 * should all return 0.20.
 	 *
 	 * isItOnSale("kitchen4001") → 0.20
@@ -60,7 +85,25 @@ public class Exercises {
 	 *
 	 */
 	public double isItOnSale(String itemNumber) {
-		return -1.0;
+		if (itemNumber == null){
+			return 0.00;
+		}
+		String uppercaseItemNumber = itemNumber.toUpperCase();
+
+		Map<String, Double> itemsOnSaleMap = new HashMap<>();
+		itemsOnSaleMap.put("KITCHEN4001", 0.20);
+		itemsOnSaleMap.put("GARAGE1070", 0.15);
+		itemsOnSaleMap.put("LIVINGROOM", 0.10);
+		itemsOnSaleMap.put("KITCHEN6073", 0.40);
+		itemsOnSaleMap.put("BEDROOM3434", 0.60);
+		itemsOnSaleMap.put("BATH0073", 0.15);
+
+		// gets the key for the value in parentheses
+		if (itemsOnSaleMap.get(uppercaseItemNumber) == null) {
+			return 0.00;
+		}
+		return itemsOnSaleMap.get(uppercaseItemNumber);
+
 	}
 
 	/*
@@ -74,7 +117,19 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		int peterMoney = peterPaul.get("Peter");
+		int paulMoney = peterPaul.get("Paul");
+		Map<String, Integer> sharingMap = new HashMap<>();
+
+		if(peterMoney > 0 && paulMoney < 1000){
+			sharingMap.put("Peter", peterMoney /2);
+			sharingMap.put("Paul", paulMoney+(peterMoney/2));
+
+			return sharingMap;
+		}
+
+		return peterPaul;
+
 	}
 
 	/*
@@ -87,7 +142,20 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		int peterMoney = peterPaul.get("Peter");
+		int paulMoney = peterPaul.get("Paul");
+		Map<String, Integer> partnershipMap = new HashMap<>();
+
+		if(peterMoney >= 5000 && paulMoney >= 10000){
+			partnershipMap.put("Peter", peterMoney /4 * 3);
+			partnershipMap.put("Paul", paulMoney /4 * 3);
+			partnershipMap.put("PeterPaulPartnership", peterMoney/4 + paulMoney/4);
+
+			return partnershipMap;
+		}
+
+		return peterPaul;
+
 	}
 
 	/*
@@ -99,7 +167,19 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+		Map<String, String> lettersMap = new HashMap<>();
+		String firstLetter;
+		String lastLetter;
+
+		for (String word : words){
+			firstLetter = String.valueOf(word.charAt(0));
+			lastLetter = String.valueOf(word.charAt(word.length()));
+
+			lettersMap.put(firstLetter, lastLetter);
+		}
+
+		return lettersMap;
+
 	}
 
 	/*
@@ -115,7 +195,14 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> wordCount(String[] words) {
-		return null;
+			Map<String, Integer> wordCountMap = new HashMap<>();
+
+			for(String word : words){
+				wordCountMap.put(word, wordCountMap.get(word) + 1);
+			}
+
+			return wordCountMap;
+
 	}
 
 	/*
@@ -130,7 +217,14 @@ public class Exercises {
 	 *
 	 */
 	public Map<Integer, Integer> integerCount(int[] ints) {
-		return null;
+		Map<Integer, Integer> integerCountMap = new HashMap<>();
+
+		for(Integer integerInput : ints){
+			integerCountMap.put(integerInput, integerCountMap.get(integerInput) + 1);
+		}
+
+		return integerCountMap;
+
 	}
 
 	/*
@@ -143,9 +237,24 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
-	}
+		Map<String, Boolean> ifWordOccursTwiceOrMoreMap = new HashMap<>();
+		Map<String, Integer> wordCountMap = new HashMap<>();
 
+		for (String word : words) {
+			wordCountMap.put(word, wordCountMap.get(word) + 1);
+
+		}
+
+		for (Map.Entry<String, Integer> pair : wordCountMap.entrySet()) {
+			int count = pair.getValue();
+			if (count >= 2) {
+				ifWordOccursTwiceOrMoreMap.put(pair.getKey(), true);
+			} else {
+				ifWordOccursTwiceOrMoreMap.put(pair.getKey(), false);
+			}
+		}
+		return ifWordOccursTwiceOrMoreMap;
+	}
 	/*
 	 * Given two Maps, Map<String, Integer>, merge the two into a new Map, Map<String, Integer> where keys in Map2,
 	 * and their int values, are added to the int values of matching keys in Map1. Return the new Map.
