@@ -11,7 +11,7 @@ public class Auction {
 
 	public Auction(String itemForSale) {
 		this.itemForSale = itemForSale;
-		this.currentHighBid = new Bid("", 0);
+		this.currentHighBid = Bid.emptyBid();
 		allBids = new ArrayList<>();
 	}
 
@@ -25,15 +25,14 @@ public class Auction {
 		return isCurrentWinningBid;
 	}
 
-	public Bid getHighBid() {
-		return currentHighBid;
-	}
+	public Bid getHighBid() { return currentHighBid; }
 
-	public List<Bid> getAllBids() {
-		return new ArrayList<>(allBids);
-	}
+	public List<Bid> getAllBids() { return new ArrayList<>(allBids); }
 
-	public String getItemForSale() {
-		return itemForSale;
+	public String getItemForSale() { return itemForSale; }
+
+	public String toString() {
+		return "bidding on a " +
+
 	}
 }

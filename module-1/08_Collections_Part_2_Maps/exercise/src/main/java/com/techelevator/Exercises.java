@@ -122,8 +122,9 @@ public class Exercises {
 		Map<String, Integer> sharingMap = new HashMap<>();
 
 		if(peterMoney > 0 && paulMoney < 1000){
-			sharingMap.put("Peter", peterMoney /2);
-			sharingMap.put("Paul", paulMoney+(peterMoney/2));
+			int halfPeterMoney = peterMoney/2;
+			sharingMap.put("Peter", peterMoney - halfPeterMoney);
+			sharingMap.put("Paul", paulMoney+(halfPeterMoney));
 
 			return sharingMap;
 		}
@@ -167,13 +168,14 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		Map<String, String> lettersMap = new HashMap<>();
 		String firstLetter;
 		String lastLetter;
 
+		Map<String, String> lettersMap = new HashMap<>();
+
 		for (String word : words){
-			firstLetter = String.valueOf(word.charAt(0));
-			lastLetter = String.valueOf(word.charAt(word.length()));
+			firstLetter = word.substring(0,1);
+			lastLetter = word.substring(word.length()-1);
 
 			lettersMap.put(firstLetter, lastLetter);
 		}
@@ -198,9 +200,14 @@ public class Exercises {
 			Map<String, Integer> wordCountMap = new HashMap<>();
 
 			for(String word : words){
-				wordCountMap.put(word, wordCountMap.get(word) + 1);
+				//set value to 1 for each word (if not already in map)
+				if(!wordCountMap.containsKey(word)) {
+					wordCountMap.put(word, 1);
+				} else {
+					int count = wordCountMap.get(word);
+					wordCountMap.put(word, count + 1);
+				}
 			}
-
 			return wordCountMap;
 
 	}
@@ -219,10 +226,15 @@ public class Exercises {
 	public Map<Integer, Integer> integerCount(int[] ints) {
 		Map<Integer, Integer> integerCountMap = new HashMap<>();
 
-		for(Integer integerInput : ints){
-			integerCountMap.put(integerInput, integerCountMap.get(integerInput) + 1);
+		for(Integer number : ints){
+			//set value to 1 for each number (if not already in map)
+			if(!integerCountMap.containsKey(number)) {
+				integerCountMap.put(number, 1);
+			} else {
+				int count = integerCountMap.get(number);
+				integerCountMap.put(number, count + 1);
+			}
 		}
-
 		return integerCountMap;
 
 	}
@@ -237,23 +249,32 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		Map<String, Boolean> ifWordOccursTwiceOrMoreMap = new HashMap<>();
-		Map<String, Integer> wordCountMap = new HashMap<>();
 
-		for (String word : words) {
-			wordCountMap.put(word, wordCountMap.get(word) + 1);
+		// create a map for the occurrence of each given word
+		Map<String, Integer> wordMultipleMap = new HashMap<>();
 
-		}
-
-		for (Map.Entry<String, Integer> pair : wordCountMap.entrySet()) {
-			int count = pair.getValue();
-			if (count >= 2) {
-				ifWordOccursTwiceOrMoreMap.put(pair.getKey(), true);
+		for(String word : words){
+			//set value to 1 for each word (if not already in map)
+			if(!wordMultipleMap.containsKey(word)) {
+				wordMultipleMap.put(word, 1);
 			} else {
-				ifWordOccursTwiceOrMoreMap.put(pair.getKey(), false);
+				int count = wordMultipleMap.get(word);
+				wordMultipleMap.put(word, count + 1);
 			}
 		}
-		return ifWordOccursTwiceOrMoreMap;
+
+		// create a map for if the value of each given word exceeds 2
+		Map<String, Boolean> wordBooleanMap = new HashMap<>();
+
+		for (Map.Entry<String, Integer> pair : wordMultipleMap.entrySet()) {
+			int count = pair.getValue();
+			if (count >= 2) {
+				wordBooleanMap.put(pair.getKey(), true);
+			} else {
+				wordBooleanMap.put(pair.getKey(), false);
+			}
+		}
+		return wordBooleanMap;
 	}
 	/*
 	 * Given two Maps, Map<String, Integer>, merge the two into a new Map, Map<String, Integer> where keys in Map2,
@@ -267,6 +288,38 @@ public class Exercises {
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse,
 			Map<String, Integer> remoteWarehouse) {
+//		Map<String, Integer> combinedMap = new HashMap<>();
+//
+//		combinedMap.putAll(mainWarehouse);
+//
+//		for(word : )
+//		combinedMap.putIfAbsent();
+//
+//		if(!combinedMap.containsKey(remoteWarehouse)){
+//			combinedMap.put(remoteWarehouse.keySet(), remoteWarehouse.values());
+//		}
+//
+//		return combinedMap;
+
+//		// Copy mainWarehouse to the new combineMap
+//		for (Map.Entry<String, Integer> entry : mainWarehouse.entrySet()){
+//			combinedMap.put(entry.getKey(), entry.getValue());
+//		}
+//
+//		for(Map.Entry<String, Integer> entry : remoteWarehouse.entrySet()){
+//			if(!combinedMap.containsKey(entry)){
+//				combinedMap.put(remoteWarehouse.get(Map.entry));
+//			}
+//		}
+//
+//			// add keys not already in map for each word
+//			if(!combinedMap.containsKey(word)) {
+//				combinedMap.put(word, );
+//			} else {
+//				int count = combinedMap.get(word);
+//				combinedMap.put(word, count + 1);
+//			}
+
 		return null;
 	}
 
