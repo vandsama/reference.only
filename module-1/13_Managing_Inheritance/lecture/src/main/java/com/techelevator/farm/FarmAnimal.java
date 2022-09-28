@@ -1,8 +1,9 @@
 package com.techelevator.farm;
 
-public class FarmAnimal implements Singable {
+public abstract class FarmAnimal implements Singable {
 	private String name;
 	private String sound;
+	private boolean isAsleep = false;
 
 	public FarmAnimal(String name, String sound) {
 		this.name = name;
@@ -12,8 +13,37 @@ public class FarmAnimal implements Singable {
 	public String getName( ) {
 		return name;
 	}
-	public String getSound( ) {
-		return sound;
+	public String getSound( )
+	{
+		if (this.isAsleep) {
+			return "zzzzzzzz";
+		}
+
+		// does the subclass have a custom sound that should be used?
+		String customSound = this.GetCustomSound();
+
+		// use the custom sound if one is returned
+		return (customSound != null) ? customSound : sound;
+	}
+
+	public void sleep() {
+		isAsleep = true;
+	}
+
+	public void wake() {
+		isAsleep = false;
+	}
+
+	// all subclasses must implement this method
+	public abstract String eat();
+
+	protected String GetCustomSound() {
+		return getSound();
+	}
+
+	@Override
+	public String toString() {
+		return this.name + " sounds like " + this.sound;
 	}
 
 }

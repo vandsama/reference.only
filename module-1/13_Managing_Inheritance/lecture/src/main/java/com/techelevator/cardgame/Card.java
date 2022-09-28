@@ -6,15 +6,15 @@ public class Card {
 
     // properties
     private int rank = 0;
-    private int suit = 0;
+    private Suits suit;
     private boolean isFaceUp = true;
 
-    public Card(int rank, int suit) {
+    public Card(int rank, Suits suit) {
         this.rank = rank;
         this.suit = suit;
     }
 
-    public Card(int rank, int suit, boolean faceUp) {
+    public Card(int rank, Suits suit, boolean faceUp) {
         this(rank, suit);
         this.isFaceUp = faceUp;
     }

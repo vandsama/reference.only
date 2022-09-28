@@ -1,10 +1,20 @@
 package com.techelevator.farm;
 
+import com.techelevator.access.two.C;
+
 public class OldMacdonald {
 	public static void main(String[] args) {
 
+		Cat myCat = new Cat();
+		Cow cow = new Cow();
+		Pig pig = new Pig();
+
+		myCat.sleep();
+		cow.sleep();
+		pig.sleep();
+
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {cow, myCat, new Chicken(), pig, new Tractor()};
 
 		for (Singable singable : singables) {
 			String name = singable.getName();
@@ -19,7 +29,7 @@ public class OldMacdonald {
 			System.out.println();
 		}
 
-		Sellable[] sellables = new Sellable[] {new Cow(), new Pig(), new Egg()};
+		Sellable[] sellables = new Sellable[] {cow, pig, new Egg()};
 
 		for (Sellable sellable : sellables) {
 			System.out.println("Step right up and get your " + sellable.getName());
