@@ -11,11 +11,11 @@ public class AlarmClock {
     wakeUp(0, false) → "10:00"
     */
     public String wakeUp(int day, boolean vacation) {
-        boolean isWeekend = day == 0 || day == 6;
+        boolean isWeekend = day == 0 || day == 6; // 2 paths
         if (vacation) {
-            return isWeekend ? "off" : "10:00";
+            return isWeekend ? "off" : "10:00"; // 2 paths
         } else {
-            return isWeekend ? "10:00" : "7:00";
+            return isWeekend ? "10:00" : "7:00"; // 2 paths
         }
     }
 
