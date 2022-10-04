@@ -1,0 +1,13 @@
+Classes & encapsulation
+	primitive data types - simple
+	arrays - limited size
+	collections - more complex, eg, clock
+Classes
+Properties
+Methods
+Constructors
+The static modifier
+Access modifiers
+Overloading methods & constructors
+Loosely coupled code
+Organization of classes
