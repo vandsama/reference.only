@@ -33,6 +33,13 @@ public class BookReader {
         boolean inBookText = false; // Are you reading between the start and end markers?
         int lineCount = 0;          // Count of lines between the start and end markers.
 
+
+        // Get search word from user
+        Scanner moreUserInput = new Scanner(System.in);
+        System.out.println("Enter your search word: ");
+        String searchWord = moreUserInput.nextLine();
+
+
         // Open the file
         try (Scanner fileInput = new Scanner(bookFile)) {
             /*
@@ -46,7 +53,7 @@ public class BookReader {
                 /*
                 Step 4: Skip the header information before book content
                  */
-                if (lineOfText.startsWith(BEGIN_MARKER)) {
+                if (lineOfText.contains(BEGIN_MARKER)) {
                     inBookText = true;
                     continue;  // No need to process this line...go to the next
                 }
@@ -61,8 +68,11 @@ public class BookReader {
                 if (inBookText) {
                     // Increment the line count.
                     lineCount++;
+
+                if (lineOfText.contains(searchWord)) {
                     // Print the line
                     System.out.println(lineCount + ": " + lineOfText);
+                }
                 }
             }
         } catch (FileNotFoundException e) {
