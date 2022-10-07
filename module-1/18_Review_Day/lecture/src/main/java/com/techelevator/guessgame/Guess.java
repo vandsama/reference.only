@@ -1,26 +1,24 @@
-package com.techelevator;
-
+package com.techelevator.guessgame;
+import com.techelevator.guessgame.GameLogic;
 import java.util.Scanner;
 
 public class Guess {
     public static void main(String[] args) {
+        final Guess game = new Guess();
+        game.run();
+    }
 
-        final Scanner userInput = new Scanner(System.in);
-        final int secret = (int) (Math.random() * 100) + 1;
+    public void run() {                                                 // most of the logic goes in a run() method
+        final GameLogic logic = new GameLogic();
+        final UserInterface ui = new UserInterface();
 
-        while (true) {
-            System.out.println("Guess a number between 1 and 100");
-            String guessAsString = userInput.nextLine();
-            int guess = Integer.parseInt(guessAsString);
-            if (guess == secret) {
-                System.out.println("CORRECT!!");
+        while (true) {                                                  // game flow
+            int guess = ui.getGuess();
+            GameLogic.GuessResult result = logic.guessOutcome(guess);
+            ui.reportResult(result);
+            if (result == GameLogic.GuessResult.CORRECT) {
                 break;
-            } else if (guess > secret) {
-                System.out.println("lower");
-            } else {
-                System.out.println("higher");
             }
         }
-
     }
 }
