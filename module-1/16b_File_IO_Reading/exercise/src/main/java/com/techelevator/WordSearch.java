@@ -23,14 +23,13 @@ public class WordSearch {
 
 
 		// Get search word from user
-		Scanner moreUserInput = new Scanner(System.in);
 		System.out.println("What is the search word you are looking for? ");
-		String searchWord = moreUserInput.nextLine();
+		String searchWord = userInput.nextLine();
 
 		// Get search word from user
-		Scanner evenMoreUserInput = new Scanner(System.in);
+
 		System.out.println("Should the search be case sensitive? (Y\\N) ");
-		String isCaseSensitive = evenMoreUserInput.nextLine();
+		String isCaseSensitive = userInput.nextLine();
 
 
 		// Open the file
@@ -43,19 +42,21 @@ public class WordSearch {
 
 				// Increment the line count.
 				lineCount++;
-				if (lineOfText.contains(searchWord)) {
+
+				if (isCaseSensitive.equalsIgnoreCase("y") && lineOfText.contains(searchWord)) {
 					System.out.println(lineCount + ": " + lineOfText);
-				} else if (isCaseSensitive == "N" && lineOfText.toLowerCase().contains(searchWord.toLowerCase())) {
+				} else if (isCaseSensitive.equalsIgnoreCase( "N") && lineOfText.toLowerCase().contains(searchWord.toLowerCase())) {
 					// Print the line
 					System.out.println(lineCount + ": " + lineOfText);
 				}
+
 			}
 		} catch (FileNotFoundException e) {
 			// Could not find the file at the specified path.
 			System.out.println("The file was not found: " + bookFile.getAbsolutePath());
 		}
 		// Tell the user how many lines of content were found.
-		System.out.println("Found " + lineCount + " lines of text in " + filePath);
+		//System.out.println("Found " + lineCount + " lines of text in " + filePath);
 	}
 }
 
