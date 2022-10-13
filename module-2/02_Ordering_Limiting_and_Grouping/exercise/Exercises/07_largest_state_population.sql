@@ -2,3 +2,5 @@
 -- Expected answer is around 39,500,000
 -- (1 row)
 
+select max(population) as largest_state_population
+from state

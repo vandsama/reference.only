@@ -2,4 +2,4 @@
 
 SELECT state_name, state_nickname
 FROM state
-WHERE state_nickname IS NULL OR state_nickname LIKE 'The%';
+sx

@@ -3,3 +3,7 @@
 -- Order the results alphabetically by nickname.
 -- (51 rows)
 
+SELECT (state_name || ' (' || state_nickname || ')') as state_and_nickname
+FROM state
+WHERE state_nickname is not null
+ORDER BY state_nickname;

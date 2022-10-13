@@ -3,3 +3,5 @@
 -- Exepcted answer is around 4,000
 -- (1 row)
 
+select max(population/area) AS population_density
+from state

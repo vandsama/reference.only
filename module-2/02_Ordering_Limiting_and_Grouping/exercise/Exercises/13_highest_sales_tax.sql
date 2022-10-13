@@ -2,3 +2,7 @@
 -- Order the results by sales tax with the highest number first, then by state name alphabetically.
 -- (5 rows)
 
+select state_name, sales_tax
+from state
+order by sales_tax desc, state_name
+FETCH NEXT 5 ROWS ONLY;
