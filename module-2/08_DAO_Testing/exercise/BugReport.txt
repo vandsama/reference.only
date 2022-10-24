@@ -1,43 +1,43 @@
 Bug 1
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByEmployeeId_returns_list_of_all_timesheets_for_employee
 
-Expected output:
+Expected output: 2
 
-Actual output:
+Actual output: 1
 
-How did you fix this bug?
+How did you fix this bug? Change the 'if' to a 'while' statement to go through the whole list.
 
 
 Bug 2
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getTimesheetsByProjectId
 
-Expected output:
+Expected output: 3
 
-Actual output:
+Actual output: 2
 
-How did you fix this bug?
+How did you fix this bug? Change 'employee_id' in the WHERE statement of the query to 'project_id'.
 
 
 Bug 3
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: updated_timesheet_has_expected_values_when_retrieved
 
-Expected output:
+Expected output: Updated timesheet matches
 
-Actual output:
+Actual output: Billable did not match
 
-How did you fix this bug?
+How did you fix this bug? Billable was missing in the updateTimesheet method under the query and in jdbcTemplate.update.
 
 
 Bug 4
 -----
-Test that demonstrates problem:
+Test that demonstrates problem: getBillableHours_returns_correct_total
 
-Expected output:
+Expected output: Returns if timesheet is billable
 
-Actual output:
+Actual output: Returns if timesheet is billable
 
-How did you fix this bug?
+How did you fix this bug? Add the billable IS TRUE boolean condition to the getBillableHours method.
 

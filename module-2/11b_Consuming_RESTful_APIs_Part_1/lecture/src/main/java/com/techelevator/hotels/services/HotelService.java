@@ -11,11 +11,12 @@ public class HotelService {
     private final RestTemplate restTemplate = new RestTemplate();
 
     public Hotel[] listHotels() {
-        return null;
+        this.restTemplate.getForObject(API_BASE_URL+"hotels",Hotel[].class);
+        return hotels;
     }
 
     public Review[] listReviews() {
-        return null;
+        return this.restTemplate.getForObject(API_BASE_URL+"reviews", Review[].class);
     }
 
     public Hotel getHotelById(int id) {
