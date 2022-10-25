@@ -3,9 +3,15 @@ package com.techelevator.hotels.services;
 import com.techelevator.hotels.model.Hotel;
 import com.techelevator.hotels.model.Reservation;
 import com.techelevator.util.BasicLogger;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class HotelService {
@@ -18,7 +24,13 @@ public class HotelService {
      */
     public Reservation addReservation(Reservation newReservation) {
         // TODO: Implement method
-        return null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Reservation> payload = new HttpEntity<>(newReservation,headers);
+
+        Reservation actual = this.restTemplate.postForObject(API_BASE_URL+"reservations",payload,Reservation.class);
+
+        return actual;
     }
 
     /**
@@ -27,15 +39,23 @@ public class HotelService {
      */
     public boolean updateReservation(Reservation updatedReservation) {
         // TODO: Implement method
-        return false;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Reservation> payload = new HttpEntity<>(updatedReservation,headers);
+        this.restTemplate.put(API_BASE_URL+"reservations/" + updatedReservation.getId(),payload);
+
+        return true;
     }
 
     /**
      * Delete an existing reservation
      */
     public boolean deleteReservation(int id) {
+        Map<String,String> pathParameters = new HashMap<>();
+        pathParameters.put("id",Integer.toString(id));
         // TODO: Implement method
-        return false;
+        this.restTemplate.delete(API_BASE_URL+"reservations/{id}", pathParameters);
+        return true;
     }
 
     /* DON'T MODIFY ANY METHODS BELOW */
