@@ -15,20 +15,51 @@ public class AuctionService {
     public static String API_BASE_URL = "http://localhost:3000/auctions/";
     private RestTemplate restTemplate = new RestTemplate();
 
+    //There is a helper method available that creates an HttpEntity with a content-type header set to JSON.
 
+    //The add() method takes an Auction object as a parameter that's passed from the console. The add() method must return the Auction object that comes back from the API.
     public Auction add(Auction newAuction) {
-        // place code here
-        return null;
+        HttpEntity<Auction> entity = makeEntity(newAuction);
+
+        Auction returnedAuction = null;
+        try {
+            returnedAuction = restTemplate.postForObject(API_BASE_URL, entity, Auction.class);
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return returnedAuction;
     }
 
+    //The update() method takes an Auction object as a parameter that's passed from the console. The update() method must return true if no errors occur when calling the API, and false otherwise.
     public boolean update(Auction updatedAuction) {
-        // place code here
-        return false;
+        HttpEntity<Auction> entity = makeEntity(updatedAuction);
+
+        boolean success = false;
+        try {
+            restTemplate.put(API_BASE_URL + updatedAuction.getId(), entity);
+            success = true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return success;
     }
 
+    //The delete() method takes an integer as a parameter that's passed from the console. It's the ID of the auction to delete. The delete() method must return true if no errors occur when calling the API, and false otherwise.
     public boolean delete(int auctionId) {
-        // place code here
-        return false;
+        boolean success = false;
+        try {
+            restTemplate.delete(API_BASE_URL + auctionId);
+            success = true;
+        } catch (RestClientResponseException e) {
+            BasicLogger.log(e.getRawStatusCode() + " : " + e.getStatusText());
+        } catch (ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return success;
     }
 
     public Auction[] getAllAuctions() {
