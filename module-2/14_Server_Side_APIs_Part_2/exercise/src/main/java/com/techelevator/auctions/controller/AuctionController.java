@@ -1,5 +1,6 @@
 package com.techelevator.auctions.controller;
 
+import java.rmi.server.RMIClassLoader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.model.Auction;
 import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auctions")
@@ -49,10 +52,25 @@ public class AuctionController {
         }
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping( path = "", method = RequestMethod.POST)
-    public Auction create(@RequestBody Auction auction) {
+    public Auction create(@RequestBody @Valid Auction auction) {
         return dao.create(auction);
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.PUT)
+    public Auction update(@RequestBody @Valid Auction auction, @PathVariable int id) {
+        if (auction.getId() != id) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auction Not Found");
+        } else {
+            return dao.update(auction, id);
+        }
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable int id) {
+        dao.delete(id);
+    }
 
 }
