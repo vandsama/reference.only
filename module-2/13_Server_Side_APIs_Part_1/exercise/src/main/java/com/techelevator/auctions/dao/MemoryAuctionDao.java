@@ -5,7 +5,9 @@ import com.techelevator.auctions.model.Auction;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//this class provides data access code
+//To reduce complexity, a static List substitutes for a DBMS
+//some methods in here that will be called from the controller
 public class MemoryAuctionDao implements AuctionDao {
 
     private static List<Auction> auctions = new ArrayList<>();

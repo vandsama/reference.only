@@ -1,9 +1,13 @@
 package com.techelevator.reservations.model;
 
+import javax.validation.constraints.NotBlank;
+
 public class Reservation {
 
     private int id;
     private int hotelID;
+
+    @NotBlank(message = "a registration name is required")
     private String fullName;
     private String checkinDate;
     private String checkoutDate;
