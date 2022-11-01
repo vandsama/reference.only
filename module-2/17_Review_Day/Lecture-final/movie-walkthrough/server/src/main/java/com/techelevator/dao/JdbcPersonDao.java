@@ -40,8 +40,8 @@ public class JdbcPersonDao implements PersonDao {
         return new Person(
                 results.getInt("person_id"),
                 results.getString("person_name"),
-                safeGetDateFromResult(results, "birthday"),
-                safeGetDateFromResult(results, "deathday"),
+                DaoHelpers.safeGetLocalDateFromResult(results, "birthday"),
+                DaoHelpers.safeGetLocalDateFromResult(results, "deathday"),
                 results.getString("biography"),
                 results.getString("profile_path"),
                 results.getString("home_page")
@@ -49,11 +49,4 @@ public class JdbcPersonDao implements PersonDao {
 
     }
 
-    private LocalDate safeGetDateFromResult(SqlRowSet results, String column) {
-        LocalDate actual = null;
-        if (results.getDate(column) != null) {
-            actual = results.getDate(column).toLocalDate();
-        }
-        return actual;
-    }
 }
