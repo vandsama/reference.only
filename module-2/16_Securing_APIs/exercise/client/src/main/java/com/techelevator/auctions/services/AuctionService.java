@@ -7,6 +7,8 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
+import javax.print.DocFlavor;
+
 public class AuctionService {
 
     public static final String API_BASE_URL = "http://localhost:8080/auctions/";
@@ -34,6 +36,9 @@ public class AuctionService {
         Auction auction = null;
         try {
             // Add code here to send the request to the API and get the auction from the response.
+            ResponseEntity<Auction> response = restTemplate.exchange(API_BASE_URL + id, HttpMethod.GET,
+                    makeAuthEntity(),Auction.class);
+            auction = response.getBody();
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
