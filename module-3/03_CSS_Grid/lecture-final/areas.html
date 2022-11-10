@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>areas grid</title>
+        <style>
+            #container {
+                display: grid;
+                grid-template-columns: 1fr 3fr 1fr;
+                grid-template-rows: 10vh auto 10vh;
+                gap: 5px;
+                grid-template-areas:
+                    "ga-header  ga-header   ga-header"
+                    "ga-logo    ga-right    ga-right"
+                    "ga-left    ga-right    ga-right"
+                    "ga-footer  ga-footer   ga-footer";
+            }
+
+            header {
+                grid-area: ga-header;
+            }
+
+            .logo {
+                grid-area: ga-logo;
+                background-color: cadetblue;
+            }
+
+            /* .left,
+            .right {
+                height: 80vh;
+            } */
+
+            .left {
+                background-color: aqua;
+                grid-area: ga-left;
+            }
+
+            .right {
+                background-color: blueviolet;
+                grid-area: ga-right;
+            }
+
+            footer {
+                grid-area: ga-footer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <header>HEADER</header>
+            <section class="logo">
+                <img src="" alt="">
+            </section>
+            <section class="left">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </section>
+            <section class="right">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, ea adipisci ipsa veritatis quos
+                consectetur corrupti voluptate recusandae repellat illo omnis, totam architecto iste, voluptatibus vitae
+                tenetur! Dolorum, natus eligendi?
+            </section>
+            <footer>FOOTER</footer>
+        </div>
+    </body>
+
+</html>
