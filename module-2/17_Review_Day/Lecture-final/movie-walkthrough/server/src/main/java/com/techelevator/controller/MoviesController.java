@@ -38,5 +38,4 @@ public class MoviesController {
     public List<Person> getActorsByMovieId(@PathVariable int id) {
         return this.personDao.getActorsForMovie(id);
     }
-
 }

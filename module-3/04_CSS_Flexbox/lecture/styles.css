@@ -1,4 +1,40 @@
- 
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+ footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+ }
+
+ #featured > section {
+   display: flex;
+   justify-content: center;
+ }
+
+ #featured > section > article > div {
+   display: flex;
+   justify-content: center
+ }
+
+
+ #all-items > section > article {
+   display: flex;
+   align-items: center;
+ }
+
+#all-items section article:nth-child(even) {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+#all-items section article div:last-child{
+  flex-basis: 80%;
+}
+
 
 
 /***** enter flexbox CSS above this line *****/

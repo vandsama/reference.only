@@ -1,0 +1,25 @@
+* {
+    background-color:rgb(170,170,170);
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;                                             
+}
+
+#financeImage {
+    width: 300px;
+    border: 20px groove #1A472A;
+}
+
+#quotes-section > h4 {
+    font-style: italic;
+}
+
+table {
+    width: 0%5;
+}
+
+th {
+    width: 20%;
+}
