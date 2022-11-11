@@ -7,6 +7,10 @@ h1 {
     text-align: center;                                             
 }
 
+h2 {
+    text-decoration-line: underline;
+}
+
 #financeImage {
     width: 300px;
     border: 20px groove #1A472A;
