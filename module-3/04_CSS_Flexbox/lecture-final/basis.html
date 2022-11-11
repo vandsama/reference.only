@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>flex basis</title>
+        <style>
+            div {
+                display: flex;
+            }
+
+            h2 {
+                border: 1px solid red;
+            }
+
+            #auto {
+                flex-basis: auto;
+                width: 10px;
+                background-color: aqua;
+            }
+
+            #content {
+                flex-basis: content;
+                width: 10px;
+                background-color: blue;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>what is the difference between flex-basis content & auto</h1>
+
+        <div>
+            <h2 id="auto">crazy things happen crazy things happen</h2>
+        </div>
+        <div>
+            <h2 id="content">crazy things happen crazy things happen</h2>
+        </div>
+
+    </body>
+
+</html>
