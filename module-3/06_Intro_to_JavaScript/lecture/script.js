@@ -9,9 +9,41 @@
  * They don't have a return type and the naming convention is camel-case.
  */
 function variables() {
+  console.log("creating variables");
+  const a = 0;
+  let b = 0;
+  // a = 1; cannot reassign const\
+  let c = [1,2,3,"hello","world"];
+  console.log(c);
+  const myObj = {foo: "hello", bar: "world"};
+  myObj.more = "1234";
+  myObj["more"] = 4567;
+  console.log(myObj);
+
+  // console.log(variables)
+
+  b = 1234;
+  console.log({b,a});
+}
+
   // Declares a variable where the value cannot be changed
   // Declares a variable those value can be changed
   // Declares a variable that will always be an array
+
+
+function doingMath() {
+  console.log(2 + 2);
+  console.log("hello" + "world");
+  console.log(1 + "2");
+  console.log(10-2);
+  console.log("10" - 2);
+  console.log("10"*2);
+}
+
+function stringFormatting() {
+  const a = 1;
+  const b = 2;
+  const r = `here are the values ${a} and ${b}`;
 }
 
 /**
@@ -61,23 +93,11 @@ function falsy(x) {
     - or they can be functions
 */
 function objects() {
-  const person = {
-    firstName: "Bill",
-    lastName: "Lumbergh",
-    age: 42,
-    employees: [
-      "Peter Gibbons",
-      "Milton Waddams",
-      "Samir Nagheenanajar",
-      "Michael Bolton"
-    ]
-  };
-
-  // Log the object
-
-  // Log the first and last name
-
-  // Log each employee
+  const me = {
+    lastName: "mouse",
+    firstName: "micky"
+  }
+  console.log(me);
 }
 
 /*

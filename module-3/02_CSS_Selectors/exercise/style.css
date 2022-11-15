@@ -15,3 +15,105 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+
+
+
+aside {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+  border-right-color: rgba(0,173,238,0.4);
+  border-right-width: 1px;
+  border-right-style: solid;
+}
+
+aside > img {
+  display: block;
+  height: 120px;
+  margin: 0 auto;
+}
+
+main {
+  padding-left: 200px;
+  margin-left: 220px;
+  padding-right: 20px;
+}
+
+
+
+
+nav > ul > li {
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom-color: rgba(0,173,238,0.4);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;  
+  margin: auto;
+  width: 98%;
+  padding-left: 2%;
+  padding-right: 2%;
+  list-style: none;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+nav > ul > li > a {
+  font-weight: bold;
+  color: #00ADEE;  
+  
+}
+
+li:not(:first-child) a {
+  text-decoration: none;
+}
+
+
+
+
+
+header > img {
+  height: 100px;
+  padding-bottom: 1px;
+}
+
+#placeholder {
+  width: 100%;
+}
+
+
+
+
+
+
+section > div {
+  display: inline-block;
+  width: 33%;
+  padding: 1px;
+}
+
+section > div > h2 {
+  color: #8CC36F;
+}
+
+h2 > i {
+  padding-right: 2%;
+}
+
+#what-we-do {
+  padding-top: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgba(170, 239, 135, 0.8);
+}
+
+#our-work {
+  padding-top: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgba(170, 239, 135, 0.8);
+}
+
+#contact-us {
+  padding-top: 1px;
+}
