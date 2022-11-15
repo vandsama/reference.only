@@ -50,3 +50,165 @@ header img {
 #student-picture img{
     border-radius: 50%;
 }
+
+
+
+
+
+/* grids */
+
+#main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 50px;
+    align-items: center;
+    justify-content: center;
+
+    grid-template-areas: 
+    "gaHeadline     gaHeadline  gaPicture"
+    "gaQuote        gaQuote     gaPicture"
+    "gaProfile      gaProfile   gaContact"
+    "gaExp          gaExp       gaExp";
+}
+
+#experience-grid { 
+    display: grid;
+    grid-area: gaExp;
+    row-gap: 20px;
+    column-gap: 50px;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "gaCode         gaCode"
+    "gaDB           gaDB"
+    "gaWeb          gaDesign";
+}
+
+#headline {
+    grid-area: gaHeadline;
+}
+
+#student-picture {
+    grid-area: gaPicture;
+    margin: auto;
+    text-align: center;
+}
+
+#student-quote {
+    grid-area: gaQuote;
+}
+
+#student-profile {
+    grid-area: gaProfile;
+}
+
+#student-contact {
+    grid-area: gaContact;
+    margin: auto;
+    text-align: center;
+}
+
+
+
+
+#experience-code {
+    grid-area: gaCode;
+}
+
+#experience-database {
+    grid-area: gaDB;
+}
+
+#experience-web {
+    grid-area: gaWeb;
+}
+
+#experience-design {
+    grid-area: gaDesign;
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 35px;
+        align-items: center;
+        justify-content: center;
+    
+        grid-template-areas: 
+        "gaHeadline     gaHeadline"
+        "gaQuote        gaPicture"
+        "gaQuote        gaContact"     
+        "gaProfile      gaProfile"
+        "gaExp          gaExp";        
+    }    
+
+    #experience-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 20px;
+        align-items: center;
+        justify-content: center;
+
+        grid-template-areas: 
+        "gaCode         gaWeb"
+        "gaDB           gaDesign";
+    }
+}
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 450px) {
+    #main-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 35px;
+        align-items: center;
+        justify-content: center;
+    
+        grid-template-areas: 
+        "gaHeadline"
+        "gaPicture"
+        "gaContact"
+        "gaQuote"  
+        "gaProfile"
+        "gaExp";        
+    }    
+
+    #experience-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        row-gap: 20px;
+        column-gap: 20px;
+        align-items: center;
+        justify-content: center;
+
+        grid-template-areas: 
+        "gaCode"         
+        "gaWeb"
+        "gaDB"
+        "gaDesign";
+    }
+}
