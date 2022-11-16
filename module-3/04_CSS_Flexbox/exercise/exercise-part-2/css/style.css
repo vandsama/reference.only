@@ -11,7 +11,7 @@ body {
 #left-panel {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  flex-basis: 35%;
   background-color: #F7F7F7;
 }
 
