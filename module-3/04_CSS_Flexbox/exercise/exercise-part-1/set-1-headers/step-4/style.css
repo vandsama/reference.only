@@ -4,8 +4,21 @@ body {
 }
 
 header {
+  display: flex;
+  flex-direction: row;
   background-color: #F0F0F0;
   padding: 20px;
+}
+
+header > nav {
+  flex-grow: 1;
+}
+
+header > nav > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -13,6 +26,8 @@ header {
 }
 
 ul {
+  display: flex;
+  flex-direction: row;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -37,4 +52,3 @@ a:hover {
   color: #00AFEF;
   text-decoration: underline;
 }
-

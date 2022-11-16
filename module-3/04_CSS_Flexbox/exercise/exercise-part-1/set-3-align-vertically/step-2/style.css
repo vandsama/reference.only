@@ -7,6 +7,12 @@ body {
 .container {
   background-color: #F0F0F0;
   height: 500px;
+  align-items: flex-end;
+}
+
+div.container {
+  display: flex;
+  flex-direction: row;
 }
 
 .box {

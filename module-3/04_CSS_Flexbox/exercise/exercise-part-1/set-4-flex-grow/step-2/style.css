@@ -8,7 +8,13 @@ body {
   background-color: #F0F0F0;
 }
 
+div.container {
+  display: flex;
+  flex-direction: row;
+}
+
 .box {
+  flex-grow: 1;
   padding: 40px 55px;
   margin: 15px 0;
   background-color: #00AFEF;
@@ -17,7 +23,7 @@ body {
   border: solid 1px #777;
 }
 
-.box:nth-child(2),
-.box:nth-child(4) {
+.box:nth-child(even) {
+  flex-grow: 2;
   background-color: #005270;
 }
