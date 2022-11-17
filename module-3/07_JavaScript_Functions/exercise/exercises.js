@@ -20,6 +20,16 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa, satScore, recommendation) {
+    if (gpa > 4.0 || satScore > 1300 || (gpa > 3.0 && recommendation === true) || (satScore > 1200 && recommendation === true)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+
 /**
  * Write a function called useParameterToFilterArray that accepts a filter function
  * as a parameter. Use this function to filter unfilteredArray and return the result.
@@ -27,7 +37,15 @@
  * @param {function} filterFunction the function to filter with
  * @returns {number[]} the filtered array
  */
-let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction) {
+    let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+    let filteredArray = unfilteredArray.filter(filterFunction);
+    return filteredArray;
+}
+
+
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -42,6 +60,13 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber(first, second) {
+    let number = first + second;
+    return parseInt(number);
+}
+
+
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -50,13 +75,34 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
-/*
+function addAll(...number) {
+    let sum = 0;
+
+    for (let numb of number) sum += numb;
+
+    return sum;
+}
+
+
+
+/** 
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
+ * 
+ * @param {unhappyArray[]} unhappyStr 
+ * @returns {happyArray[]}
+ * 
  */
 
-/*
+function makeHappy(unhappyArray) {
+    var happyArray = unhappyArray.map(unhappyStr => "Happy " + unhappyStr);
+    return happyArray;
+}
+
+
+
+/**
  * Write and document a function called getFullAddressesOfProperties
  * that takes an array of JavaScript objects. Each object contains the
  * following keys:
@@ -67,25 +113,44 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  *     * state
  *     * zip
  *
- * getFullAddressesOfProperties returns an array of strings. 
- * Each string is a mailing address generated from the data of a single JavaScript object. 
- * 
+ * getFullAddressesOfProperties returns an array of strings.
+ * Each string is a mailing address generated from the data of a single JavaScript object.
+ *
  * Each mailing address should have the following format:
- *    
+ *
  *  streetNumber streetName streetType city state zip
  *
  * Use `map` and an anonymous function.
+ * 
+ * @param {addressArray[]} address
+ * @param {object} streetNumber
+ * @param {object} streetName
+ * @param {object} streetType
+ * @param {city} city
+ * @param {state} state
+ * @param {zip} zip
+ * @returns {formattedArray[]}
+ * 
  */
 
-/** 
+function getFullAddressesOfProperties(addressArray) {
+    let formattedArray = addressArray.map((e) => {
+        e.streetNumber + " " + e.streetName + " " + e.streetType + " " + e.city + " " + e.state + " " + e.zip
+    });
+    return formattedArray;
+}
+
+
+
+/**
  * Write and document a function called findLargest that uses `forEach`
  * to find the largest element in an array.
  * The function must work for strings and numbers.
- * 
+ *
  * For strings, "largest" means the word coming last in lexographical order.
- * Lexographic is similar to alphabetical order except that 
- * capital letters come before lowercase letters: 
- * 
+ * Lexographic is similar to alphabetical order except that
+ * capital letters come before lowercase letters:
+ *
  * "cat" < "dog" but "Dog" < "cat"
  *
  * @param {number[]|string[]} searchArray the array to search
@@ -93,7 +158,16 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  **/
 
 
-/*
+function findLargest(searchArray) {
+    var largest;
+
+    for (let searchElement of searchArray)
+
+
+    return largest;
+}
+
+/**
  * CHALLENGE
  * Write and document a function called getSumOfSubArrayValues.
  *
