@@ -59,12 +59,24 @@ function displayReview(review) {
 
 // LECTURE STARTS HERE ---------------------------------------------------------------
 
+document.addEventListener('DOMContentLoaded', setup);
+
+function setup() {
 // Set the product reviews page title.
 setPageTitle();
 // Set the product reviews page description.
 setPageDescription();
 // Display all of the product reviews on our page.
 displayReviews();
+
+const descElement = document.querySelector(".description");
+descElement.addEventListener("click", (event) => {
+  toggleDescriptionEdit(event.target);
+});
+
+}
+
+
 
 /**
  * Hide the description and show the text box.

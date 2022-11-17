@@ -7,11 +7,21 @@
 		sumDouble(2, 2) → 8
 
 		function sumDouble(x, y) {
-			// do logic here
-			// return result;
+			///// logic here /////
 			return x + y;
         }
 */
+
+function sumDouble(x, y) {
+	if (x==y) {
+		return((x+y)*2);
+	} else {
+		return x + y;
+	}
+	return x + y;
+}
+
+
 
 /*
 2. **hasTeen** We'll say that a number is "teen" if it is in the range 13..19 inclusive. 
@@ -22,6 +32,22 @@
 		hasTeen(20, 10, 13) → true
 */
 
+function hasTeen(x,y,z) {
+	const teenYears = [13,14,15,16,17,18,19];
+	let inputs = [x,y,z];
+
+	const intersection = teenYears.filter(element => inputs.includes(element));
+
+	if (intersection == false) {
+		return false;
+	}
+	else if (intersection != null) {
+		return true;
+	}
+}
+
+
+
 /* 
 3. **lastDigit** Given two non-negative int values, return true if they have the same 
     last digit, such as with 27 and 57.
@@ -30,6 +56,16 @@
 		lastDigit(6, 17) → false
 		lastDigit(3, 113) → true
 */
+
+function lastDigit(x,y) {
+	if (x % 10 === y % 10) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 
 /*
 4. **seeColor** Given a string, if the string begins with "red" or "blue" return that color 
@@ -40,13 +76,42 @@
         seeColor("blueTimes") → "blue"
 */
 
+function seeColor(str) {
+	var posRed = str.indexOf("red");
+	var posBlue = str.indexOf("blue");
+
+	if (posRed === 0) {
+		return "red";
+	} else if (posBlue === 0) {
+		return "blue";
+	} else {
+		return "";
+	}
+}
+
+
+
 /*
-5. **oddOnly** Write a function that given an array of integer of any length, removes
+5. **oddOnly** Write a function that given an array of integers of any length, removes
     the even numbers, and returns a new array of just the the odd numbers.
 
 		oddOnly([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) → [1, 3, 5, 7, 9, 11];
 		oddOnly([2, 4, 8, 32, 256]); → []
 */
+
+function oddOnly(arrayNumbers) {
+	let arrayOdds = [];
+
+	for (const arrayNumber of arrayNumbers) {
+		if (arrayNumber % 2 !== 0) {
+			arrayOdds.push(arrayNumber);
+		}
+	}
+
+	return arrayOdds;
+}
+
+
 
 /*
 6. **frontAgain** Given a string, return true if the first 2 chars in the string also appear 
@@ -56,6 +121,19 @@
 		frontAgain("edit") → false
 		frontAgain("ed") → true
 */
+
+function frontAgain(str) {
+	const firstTwoLetters = str.slice(0, 2);
+	const lastTwoLetters = str.slice(-2);
+
+	if (firstTwoLetters === lastTwoLetters) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 
 /*
 7. **cigarParty** When squirrels get together for a party, they like to have cigars. 
@@ -68,6 +146,18 @@ or false otherwise.
 		cigarParty(50, false) → true
 		cigarParty(70, true) → true
 */
+
+function cigarParty(numberOfCigars, isWeekend) {
+	if (numberOfCigars >= 40 && numberOfCigars <= 60 && isWeekend === false) {
+		return true;
+	} else if (numberOfCigars >= 40 && isWeekend) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 
 /*
 8. **fizzBuzz** Given a number, return a value according to the following rules:
@@ -83,6 +173,21 @@ In all other cases return the original number.
 	fizzBuzz(8) → 8
 */
 
+function fizzBuzz(number) {
+	if (number % 5 === 0 & number % 3 === 0) {
+		return "FizzBuzz";
+	} else if (number % 3 === 0) {
+		return "Fizz";
+	} else if (number % 5 === 0) {
+		return "Buzz";
+	} else {
+		return number;
+	}
+
+}
+
+
+
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
 
@@ -92,6 +197,13 @@ In all other cases return the original number.
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
 
+function filterEvens(numbers) {
+	const result = numbers.filter(number => number % 2 === 0);
+	return result;
+}
+
+
+
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
 
@@ -100,6 +212,13 @@ In all other cases return the original number.
 	filterBigNumbers([]) → []
 */
 
+function filterBigNumbers(numbers) {
+	const result = numbers.filter(number => number >= 100);
+	return result;
+}
+
+
+
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
 parameter, `x` passed in.
@@ -107,6 +226,13 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+
+function filterMultiplesOfX(numbers, x) {
+	const result = numbers.filter(number => number % x === 0);
+	return result;
+}
+
+
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -120,3 +246,14 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+
+function createObject(firstName, lastName, age) {
+	var person = new Object;
+	person.firstName = "firstName";
+	person.lastName = "lastName";
+	person.age = "age";
+
+	return person;
+}
+
+
