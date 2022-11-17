@@ -135,7 +135,7 @@ function makeHappy(unhappyArray) {
 
 function getFullAddressesOfProperties(addressArray) {
     let formattedArray = addressArray.map((e) => {
-        e.streetNumber + " " + e.streetName + " " + e.streetType + " " + e.city + " " + e.state + " " + e.zip
+        return e.streetNumber + " " + e.streetName + " " + e.streetType + " " + e.city + " " + e.state + " " + e.zip
     });
     return formattedArray;
 }
@@ -157,12 +157,16 @@ function getFullAddressesOfProperties(addressArray) {
  * @returns {number|string} the number or string that is largest
  **/
 
+// first index of array // find largest number if index is less than 
 
 function findLargest(searchArray) {
-    var largest;
+    var largest = searchArray[0];
 
-    for (let searchElement of searchArray)
-
+    for (let searchElement of searchArray) {
+        if (searchElement > largest) {
+            largest = searchElement;
+        }
+    }
 
     return largest;
 }
