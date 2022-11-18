@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>simple data binding</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+
+    <body>
+
+        <main class="app">
+            <h1>{{message}}</h1>
+            <input type="text" v-model="message">
+        </main>
+
+    </body>
+    <script>
+
+        const app = new Vue({
+            el: ".app",
+            data: {
+                message: "hello there",
+                items: ["one", "two"],
+            }
+        });
+
+        // const header = document.querySelector('h1');
+        // const input = document.querySelector('input');
+        // input.addEventListener('keyup', () => {
+        //     header.innerText = input.value;
+        // });
+    </script>
+
+</html>
