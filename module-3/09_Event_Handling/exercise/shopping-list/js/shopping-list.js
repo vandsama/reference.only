@@ -36,3 +36,68 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+// Create an event listener for DOM, place the 2 methods inside of it, and the code to mark items complete or incomplete.
+document.addEventListener('DOMContentLoaded', () => {
+
+  // place the two methods inside of the event listener
+  setPageTitle();
+  displayGroceries();
+
+  // define list items in the context of a query selector
+  const tasks = document.querySelectorAll('li');
+
+  // define the Complete All button in the context of ID
+  const completeAll = document.getElementById('toggleAll');
+
+
+  
+
+
+  // when you click or double click an individual task ('li')
+  tasks.forEach((task) => {
+    // when you click on a task mark it completed
+    task.addEventListener('click', () => {
+      if (!task.classList.contains('completed')) {
+        task.classList.add('completed');
+        task.querySelector('i').classList.add('completed');
+      }
+    });
+
+    // when you double click a task remove the completed class
+    task.addEventListener('dblclick', () => {
+      if (task.classList.contains('completed')) {
+        task.classList.remove('completed');
+        task.querySelector('i').classList.remove('completed');
+      }
+    });
+  });
+
+
+
+  // when you click the Complete All button ('toggleAll')
+
+  completeAll.addEventListener('click', () => {
+    tasks.forEach((task) => {
+      if (!task.classList.contains('completed')) {
+        task.classList.add('completed');
+        task.querySelector('i').classList.add('completed');
+        allItemsIncomplete = false;
+        completeAll.innerText = "Mark All Incomplete";
+      } else if (task.classList.contains('completed')) {
+        task.classList.remove('completed');
+        task.querySelector('i').classList.remove('completed');
+        allItemsIncomplete = true;
+        completeAll.innerText = "Mark All Complete";
+      }
+    });
+
+  });
+
+
+
+
+
+
+
+});
