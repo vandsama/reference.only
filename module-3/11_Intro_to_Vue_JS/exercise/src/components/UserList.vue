@@ -32,7 +32,11 @@
         </td>
       </tr>
       <!-- user listing goes here -->
-      <tr v-for="(user, index) in filteredList" v-bind:key="index" v-bind:class="{inactive:user.status==='Inactive'}">
+      <tr
+        v-for="user in filteredList"
+        v-bind:key="user.index"
+        v-bind:class="{ inactive: user.status === 'Inactive' }"
+      >
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.username }}</td>
@@ -42,6 +46,7 @@
     </tbody>
   </table>
 </template>
+
 <script>
 export default {
   name: "user-list",
@@ -89,7 +94,7 @@ export default {
           username: "msmith",
           emailAddress: "msmith@foo.com",
           status: "Inactive",
-        },
+        }
       ],
       search: {
         firstName: "",
@@ -102,18 +107,17 @@ export default {
   },
   computed: {
     filteredList() {
-      return this.users.search((user) => {
-        const containsFirstName = user.firstName.toLowerCase().includes(this.search.firstName.toLowerCase());
-        const containsLastName = user.lastName.toLowerCase().includes(this.search.lastName.toLowerCase());
-        const containsUsername = user.username.toLowerCase().includes(this.search.username.toLowerCase());
-        const containsEmailAddress = user.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase());
-        const containsStatus = user.status.includes(this.search.status);
-        return containsFirstName && containsLastName && containsUsername && containsEmailAddress && containsStatus;
-      });
-    },
+      return this.users.filter((user) => 
+       user.firstName.toLowerCase().includes(this.search.firstName.toLowerCase()) &&
+       user.lastName.toLowerCase().includes(this.search.lastName.toLowerCase()) &&
+       user.username.toLowerCase().includes(this.search.username.toLowerCase()) &&
+       user.emailAddress.toLowerCase().includes(this.search.emailAddress.toLowerCase()) &&
+       user.status.includes(this.search.status));
+    }
   },
 };
 </script>
+
 <style scoped>
 table {
   margin-top: 20px;
@@ -126,7 +130,7 @@ th {
 td {
   padding: 10px;
 }
-tr.disabled {
+tr.inactive {
   color: red;
 }
 input,
