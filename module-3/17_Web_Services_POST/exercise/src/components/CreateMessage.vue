@@ -16,6 +16,7 @@
 
 <script>
 import messageService from "../services/MessageService";
+
 export default {
   name: "create-message",
   props: ["topicId"],
@@ -30,15 +31,14 @@ export default {
     };
   },
   methods: {
-    saveMessage() {  
-      messageService
-        .create(this.message)
-        .then((response) => {
-          if (response.status == 201) {
-            this.$router.push("/${message.topicId}");
-          }
-        })
-    },
+    saveMessage() {
+      messageService.create(this.message)
+                    .then((response) => {
+                      if(response.status === 201) {
+                        this.$router.push(`/${this.message.topicId}`)
+                      }
+                    })
+    }
   }
 };
 </script>
