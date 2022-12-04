@@ -37,7 +37,7 @@ export default {
           this.getMessages();
         }
       });
-    }
+    },
   },
   created() {
     topicService

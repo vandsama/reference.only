@@ -40,7 +40,7 @@ export default {
           this.$router.push("/");
         }
       })
-    }
+    },
   },
   created() {
     messageService
