@@ -35,7 +35,7 @@ export default {
         messageService
       .delete(id)
       .then(response => {
-        if (response.status == 200) {
+        if (response.status === 200) {
           this.$store.commit("DELETE_MESSAGE", id);
         }
       });
@@ -48,7 +48,7 @@ export default {
         this.$store.commit("SET_ACTIVE_TOPIC", response.data);
       })
       .catch(error => {
-        if (error.response.status == 404) {
+        if (error.response.status === 404) {
           this.$router.push("/not-found");
         }
       });
